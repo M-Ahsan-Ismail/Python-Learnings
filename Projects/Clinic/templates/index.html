@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Paw Care Veterinaria</title>
+
+	<meta name="description" content="Veterinary Services in Lima">
+
+	<link rel="stylesheet" href="static\favicon.png">
+	<link rel="shortcut icon" href="static\favicon.png" type="image/x-icon">
+
+	<rel="stylesheet">
+<style>
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+section {
+  padding: 0rem 0;
+  height: 100dvh;
+}
+
+
+header {
+  padding: 4rem 1rem;
+  position: relative;
+}
+
+
+
+
+.logo {
+  border-radius: 50%;
+  width: 6rem;
+}
+
+.logo-and-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-and-title h1 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-bar {
+  background-color: #ffc0cb;
+  border-radius: 4rem;
+  padding: 2rem 4rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  width: fit-content;
+  position: absolute;
+
+}
+
+
+.nav-bar {
+  background-color: fff(59, 127, 190);
+  position: fixed;
+  top: 0%;
+  width: 30%;
+  left: 70%; 
+}
+@media only screen and (max-width: 768px) {
+  .nav-bar {
+    padding: 0px;
+    /* justify-content: space-around;  */
+    width: 100%;
+    left: 1%; 
+  }
+}
+
+.nav-bar a {
+
+  font-size: 2rem;
+  transition: 0.2s all ease-in-out;
+}
+
+.nav-bar a:hover {
+  color: #fff;
+}
+
+
+
+.hero-banner {
+	background-image: url('{{ url_for('static', filename='dog.png') }}');
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 20%;
+  padding-left: 10rem;
+	
+}
+
+.hero-banner-content {
+  display: flex;
+  align-items: center;
+}
+
+.hero-banner-content h1 {
+  font-size: 7rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.hero-banner-content p {
+  font-size: 2rem;
+  line-height: 0.5;
+}
+
+.call-to-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 60rem;
+  
+}
+
+
+
+
+
+.btn {
+  text-align: center;
+  display: inline-block;
+  padding: 8rem 0;
+  padding: 1.5rem;
+  background-color: #c0cbff;
+  border-radius: 5rem;
+  transition: 0.2s all ease-in-out;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  .hero-banner {
+    background-size: 80%;
+    padding-left: 2rem;
+  }
+
+  .hero-banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-banner-content h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+
+  .hero-banner-content p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .call-to-action {
+    width: auto;
+  }
+}
+
+
+</style>
+
+
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<div class="logo-and-title">
+				<img class="logo" src="static\favicon.png" alt="Paw Care logo">
+				<h1>Paw Care Veterinaria</h1>
+			</div>
+			<div class="nav-bar">
+				<a href="/">Home</a>
+        <a href="/admin">AdminView</a>
+				<a href="/appoint">Appointment</a>
+				<a href="/contact">Contact</a>
+			</div>
+			
+		</div>
+	</header>
+	<main>
+		<section class="hero-banner">
+			<div class="container">
+				<div class="hero-banner-content">
+					<div class="call-to-action">
+						<h1>Veterinary Services in Jhang</h1>
+						<p>Empowering Paws, Enhancing Lives:</p>
+						<p>Your Trusted Veterinary Partner in Jhang.</p>
+						<a class="btn" href="/appoint">Book Now</a>   
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

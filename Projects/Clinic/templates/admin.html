@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin View</title>
+    <style>
+
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 99;
+  padding: 99;
+  vertical-align: baseline;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+
+
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: center;
+        }
+    
+        
+.nav-bar {
+  background-color: #ffc0cb;
+  border-radius: 4rem;
+  padding: 2rem 4rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  width: fit-content;
+  position: absolute;
+
+}
+
+
+.nav-bar {
+  background-color: fff(59, 127, 190);
+  position: fixed;
+  top: 0%;
+  width: 30%;
+  left: 70%; 
+
+}
+
+
+.nav-bar a {
+
+  font-size: 1.3rem;
+  transition: 0.2s all ease-in-out;
+}
+
+.nav-bar a:hover {
+  color: #fff;
+}
+a {
+  text-decoration: none;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a href="/">Home</a>
+        <a href="/admin">AdminView</a>
+        <a href="/appoint">Appointment</a>
+        <a href="/contact">Contact</a>
+    </div>
+    <br><br><br><br><br><br><br>
+
+    <h1>Admin View: Doctor Schedules</h1>
+    {% for doctor, days in schedule.items() %}
+        <h2>{{ doctor }}</h2>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Slot 0 (12 o'clock)</th>
+                <th>Slot 1 (1 o'clock)</th>
+                <th>Slot 2 (2 o'clock)</th>
+                <th>Slot 3 (3 o'clock)</th>
+            </tr>
+            {% for day, slots in days.items() %}
+                <tr>
+                    <td>{{ day }}</td>
+                    {% for slot in slots %}
+                        <td>{{ slot }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+</body>
+</html>
