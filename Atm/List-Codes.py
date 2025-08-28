@@ -187,35 +187,32 @@ def Fun(number):
 
 
 # /////////////////////////////////////////////////////: Missing Nums:
-
-# l = [1, 2, 3, 5,4,6,11,12]
-# max_number = max(l)
-# Filter = range(1, max_number + 2)
-# for x in Filter:
-#     if x not in l:
-#         print("Missing number is:", x)
+List = [1, 2, 3, 5,4,6,11,12]
+for x in range(1, max(List) ):
+    if x not in List:
+        print("Missing number is:", x)
 
 
 ###---> Max , Min , SndMax
-# List = [1,2,3,4]
-# MAX = List[0]
-# SndMax = 0
-# MIN = List[0]
-#
-# for num in List:
-#     if num > MAX:
-#         SndMax = MAX
-#         MAX = num
-#     elif num> SndMax and num< MAX:
-#         SndMax = num
-#
-# for small in List:
-#     if small < MIN:
-#         MIN = small
-#
-# print("Max: ",MAX)
-# print("Min: ",MIN)
-# print("SndMax: ",SndMax)
+List = [1,2,3,4]
+MAX = List[0]
+SndMax = 0
+MIN = List[0]
+
+for num in List:
+    if num > MAX:
+        SndMax = MAX
+        MAX = num
+    elif num> SndMax and num< MAX:
+        SndMax = num
+
+for small in List:
+    if small < MIN:
+        MIN = small
+
+print("Max: ",MAX)
+print("Min: ",MIN)
+print("SndMax: ",SndMax)
 
 
 # Dict Like Behaviour
@@ -233,27 +230,19 @@ def Fun(number):
 #     print(f'Key: {LIST[key]}   Value: {LIST[val]}')
 
 
-# Uniquel element finder
-# A = ["a" ,"b","c","d","a" ,"b"]
-#
-# Filter = []
-# Unique = []
-#
-# for i in A:
-#     if i in Unique:
-#         Filter.append(i)
-#     else:
-#         Unique.append(i)
-#
-# print(Filter)
+# Unique element finder
+List = ["a" ,"b","c","d","a" ,"b"]
+for x in List:
+    if List.count(x) == 1:
+        print(f'Unique: {x}') # c, d
 
 
 # Find Selective Indexes Sum     VIP---> Use Odoo wala method , sum(y.loan for y in rec.line_ids)  <---VIP
-# List = [1,2,3,4,5,6,7,8,9,10]
-# Indexes = [1,3,5]
-# print([List[i] for i in Indexes])
-# Sum = sum(List[i] for i in Indexes)
-# print(Sum)
+List = [1,2,3,4,5,6,7,8,9,10]
+Indexes = [1,3,5]
+Sum = sum(List[x] for x in Indexes)
+print(Sum)
+
 
 
 # Adding corresponding elements from two lists ?
@@ -287,45 +276,45 @@ for i in range(min(len(Filter_Even), len(Filter_Odd))):
 #         print(S)
 
 
-###########---------------------------------->How Many Times Occur 1 Element  +    Duplicates Removal From List
-
-
-List = ['a', 'b', 'c', 'e', 'e', 'c', 'b', 'a', 'g']
+###########---------------------------------->How Many Times Occur 1 Element  +    Duplicates & Unique Finder
+    
+List = ['a','b','c','c','e', 'f' ,'a'  ]
+Duplicates = []
+Unique = []
 Done = []
-duplicate_items = []
-unique_items = []
-for indexes, items in enumerate(List):
-    if items not in Done:
-        zero_inx = List[indexes]
-        Temp = []
-        for inx, val in enumerate(List):
-            if val == zero_inx:
-                Temp.append(items)
-        print('Item: {} Occurs: {} - Times'.format(items, len(Temp)))
 
-        if len(Temp) > 1:
-            duplicate_items.append(Temp[0])
-        if len(Temp) == 1:
-            unique_items.append(Temp[0])
+for indexes, values in enumerate(List):
+    if values not in Done:
+        Zero_Item = List[indexes]
+        Zero_Indexes = []
+        for inx,val in enumerate(List):
+            if val == Zero_Item:
+                Zero_Indexes.append(inx)
+        print(f'item: {values} Occurs: {len(Zero_Indexes)} - Times')
 
-    Done.append(items)
+        if len(Zero_Indexes) > 1:
+            Duplicates.append(values)
 
-print(f'Duplicates:- {duplicate_items}')
-print(f'Unique:- {unique_items}')
+        else:
+            Unique.append(values)
+
+        Done.append(values)
+
+
+print(f'Unique: {Unique}')
+print(f'Duplicates: {Duplicates}')
 
 ##:- Logic: know the each element indexes and len() them
-#
-# List = ['a','b','c','c','e', 'f' ,'a'  ]
-# INDEX_A = []
-# inx_a = List[0]
-# print(inx_a)
-# for index,value in enumerate(List):
-#     if value == inx_a:
-#         INDEX_A.append(index)
-# print(INDEX_A)
+List = ['a','b','c','c','e', 'f' ,'a'  ]
+A_Indexes = []
+A = List[0] # 'a'
+for index , value in enumerate(List):
+    if value == A:
+        A_Indexes.append(index)
+print(A_Indexes)
 
 
-# ----OR - Using Comprehension------->
+# ----OR - Using Comprehension------->   Duplicates + Unique Finder & Items Count   
 List = ['a', 'b', 'c', 'e', 'e', 'c', 'b', 'a', 'g']
 Done = []
 Dupllicates = []
@@ -335,7 +324,8 @@ R1 = [
                      and List.count(x) > 1
 ]
 print(R1)
-print(Dupllicates)
+print(f'Duplicates: {Duplicates}')
+print(f'Unique: {[x for x in List if x not in Duplicates]}')
 
 #####-------------------------------------------------------END------------------------------------------------------------
 #####-------------------------------------------------------------------------------------------------------------------
@@ -367,7 +357,7 @@ print(Dupllicates)
 # inter = S1.intersection(S2)
 # print(inter)
 
-# #----> InterSection : Remove Duplicates also ---> Without Using Set
+# #----> InterSection : Remove Duplicates also ---> Without Using Set                                                          
 #
 # List = ['a','b','c','e', 'f' ,'n' ,'a' , 'n' , 'b','f','m','m']
 # Listy = ['a','b','c','z','y','m' , 'n', 'a' , 'n','f','f','f','m']
@@ -473,27 +463,23 @@ print(Diff)
 
 
 # Finf len of list without using function :
-# L1 = [3,2,1,4]
-# Total = 0
-#
-# for x in L1:
-#     Total +=1
-#
-# print(Total)
+L1 = [3,2,1,4]
+Total = 0
+for x in L1:
+    Total +=1
+print(Total)
 
 # -----------------------------------------> Frequency
-
 # Find the frequency of each element in a list
-# L1 = [3,2,1,4,4,5,5]
-# for x in L1:
-#     Count = L1.count(x)
-#     print(f"Item: {x} Occurs: {Count} Times")
 
-#####--> Using Comprehension:
-# Result = [f'item:{item}  Occurs:{self.Items.count(item)} - Times' for item in Items if item not in Done and not Done.append(item) ]
+L1 = [3,2,1,4,4,5,5]
+for x in L1:
+    Count = L1.count(x)
+    print(f"Item: {x} Occurs: {Count} Times")
 
-##------------------------------------------------------END----------------------------------------------------
-##------------------------------------------------------END----------------------------------------------------
+####--> Using Comprehension:
+Result = [f'item:{item}  Occurs:{self.Items.count(item)} - Times' for item in Items if item not in Done and not Done.append(item) ]
+
 ##------------------------------------------------------END----------------------------------------------------
 ##------------------------------------------------------END----------------------------------------------------
 
@@ -504,6 +490,162 @@ print(Diff)
 #     print('Yes PlaiDrome')
 # else:
 #     print('Not PaliDrome')
+
+
+
+
+# Find the majority element (element that appears more than n/2 times) in a list, Cant not mix(str,int)---:
+
+List = ['a', 'c', 'c', 'c',   'a']
+
+res = max(List, key=List.count)
+print('Majority Element: ', res) # 'c'
+
+# OR
+
+for x in List:
+    if List.count(x) > len(List) / 2:
+        print(f'Item: {x}')  # 'c'
+
+
+# Sort a list of tuples based on the second element.
+Tuple_List = [  (1,'c'),(3,'d'),(2,'a')  ]
+Tuple_List.sort(key=lambda x : x[1])
+print(Tuple_List)
+
+
+# SubSet Of any list:
+
+# Logic: Copy Each Set Item and append data from list in that and append res in Set again.
+
+List = [1,2,3]
+Sets = [ [] ]
+
+for index in range(len(List)):
+    for inx in range(len(Sets)):
+        res = Sets[inx].copy()
+        res.append(List[index])
+        Sets.append(res)
+print(Sets)
+
+
+
+
+# Given a list of numbers, rearrange them such that the even numbers appear
+# before the odd numbers while maintaining their relative order.
+
+LST = [1, 5, 2, 3, 3, 7, 4, 2]
+Even = [x for x in LST if x % 2 == 0]
+Odd = [x for x in LST if x % 2!= 0]
+Even.extend(Odd)
+print(Even)
+
+# Divisible By 3 or any number:
+Num = 12
+if Num % 3 == 0:
+     print(True)
+else:
+     print(False)
+
+
+# Leap Year:-
+year = 2024
+if year%4==0 and (year%100 !=0 or year % 400 ==0):
+    print("leap year")
+else:
+    print("not")
+
+
+
+# Stars:
+i = 1
+while i <= 5 :
+    print(i * "*")
+    i = i + 1
+
+i = 5
+while i >= 1 :
+    print(i * "*")
+    i = i - 1
+
+
+
+# Prime Number Checker:
+
+number = [1,2,3,4,5,6,7]
+Filter = []
+
+def Prime(number):
+    for each in number:
+        for x in range(2, int(each/2) + 1):
+            if each % x == 0:
+                return None
+        Filter.append(each)
+Prime(number)
+print(Filter)
+
+
+# Single Number Prime Check:
+number = 11
+for x in range(2, number):
+    if number % x == 0:
+        print('Not Prime')
+
+else:
+    print('Prime')
+
+
+
+# Sum Of First 1000
+# def Sum(x):
+#     total = 0
+#     for i in range(x+1):
+#         total += i
+#     print(total)
+#
+# Sum(1000)
+
+########-----------------------------------------------------------------------------: Floor Divion :----------------------------------------------------------------
+
+# Floor division : results in to integer less then or equal to maths variable.
+# it rounds the result to nearest whole number mean any fraction part is discarded.
+
+print(12 // 2)   # 6   → exact division, no remainder
+print(13 // 2)   # 6   → 13/2 = 6.5 → floor is 6                     (+ve are DownGraded)
+print(-13 // 2)  # -7  → -13/2 = -6.5 → floor is -7 (more negative)  (-ve are UpGraded)
+
+# For positive numbers, it just discards the decimal part.
+# For negative numbers, it goes to the next smaller integer (i.e., more negative).
+
+
+
+########-----------------Find Median : returns index always ....
+
+# ----What is Median?
+# median is middle value in list of numbers.
+# If the number of elements is odd → median is the single middle element.
+# If the number of elements is even → median is the average of the two middle elements.
+
+# Logic ---:
+
+# in python Len(Obj) // 2 == gives us the median , mean center element index if no.of elements == odd
+# if no.of elements == even then it gives the index(next from center) , so we have to -1 for previous element, so that we can sum and divide both items by 2 to find median.
+
+#------ Odd EXAMPLE:
+List = [1,2,3,   4  ,5,6,7]
+Median = len(List) // 2
+print("Index: ",Median , "item: " ,List[Median])  # Index:  3 item:  4
+
+
+#---- Even EXAMPLE:
+List = [1, 2, 3,     4, 5    , 6, 7, 8]
+x = len(List) // 2
+print(x)  #:index: 4 which is 5
+previous = x - 1  # so -1 from index for previous
+print((List[x] + List[previous]) / 2)  # 4.5
+
+
+
 
 
 ##########--------------------------Kadens Dynamic Approach -----------------------------------------------------------------:
@@ -545,103 +687,6 @@ print(max)  # Output: 44
 
 ##########--------------------------------------------------------------------------------------------------------------
 
-
-# OR : Find the majority element (element that appears more than n/2 times) in a list.
-# Count which item occur most: Cant not mix(str,int)
-# List = [1,222,3,4,5,2,2,2,3]
-# X = max(List,key=List.count)
-# print("Majority Times Element: ",X)
-#
-# --> OR
-#               self.Array =  [9,7, 7, 11]
-#               for x in self.Array:
-#               print(f'Element: {x} Yes') if self.Array.count(x) > len(self.Array)/2 else print(f'Element: {x} No')
-
-
-# Sort a list of tuples based on the second element.
-# LST = [(1, 5), (2, 3), (3, 7), (4, 2)]
-# def Cs(i):
-#     return i[1]
-# S = LST.sort(key=Cs)
-# print(LST)
-
-
-# SubSet Of any list:
-#
-# List = [1,2,3]
-# L = [[]]
-#
-# for i in range(len(List)):
-#     for x in range(len(L)):
-#         A = L[x].copy()
-#         A.append(List[i])
-#         L.append(A)
-# print(L)
-
-
-# Given a list of numbers, rearrange them such that the even numbers appear
-# before the odd numbers while maintaining their relative order.
-
-# LST = [1, 5, 2, 3, 3, 7, 4, 2]
-# Even = [x for x in LST if x%2==0]
-# ODD = [x for x in LST if x%2 !=0]
-# Even.extend(ODD)
-# print(Even)
-
-
-# Divisible By 3 or any number:
-# Num = 12
-# if Num % 3 == 0:
-#     print(True)
-# else:
-#     print(False)
-
-
-# Leap Year:-
-# year = 2024
-# if year%4==0 and (year%100 !=0 or year % 400 ==0):
-#     print("leap year")
-# else:
-#     print("not")
-
-
-# Stars:
-# i = 1
-# while i <= 5 :
-#     print(i * "*")
-#     i = i + 1
-#
-# i = 5
-# while i >= 1 :
-#     print(i * "*")
-#     i = i - 1
-
-
-# def Prime(number):
-#     for each in number:
-#         for i in range(2, int(each/2) + 1):
-#             if each % i == 0:
-#                 return None
-#         Filter.append(each)
-#     return Filter
-#
-# Filter = []
-#   
-#
-# Prime(number)
-#
-# for x in Filter:
-#     print("Prime:", x)
-
-
-# 
-# num = 11
-# for i in range(2,num):
-#     if num % i == 0:
-#         print('Num Is Not Prime')
-#         break
-# else:
-#     print('Num Is Prime')
 
 
 # Given an array representing stock prices on consecutive days,
@@ -691,26 +736,6 @@ print(max)  # Output: 44
 # print(f"Decryption Of:- {OBJ.EnList} Is: {OBJ.DeList}")
 
 
-########-----------------Floor Divion : returns index always ....
-
-# Find Median:
-# in python Len(Obj) // 2 == gives us the median , mean center element index
-# if no.of elements are odd , and if no.of elements are even then it gives the
-# index(next from center) , so we have to -1 for previous center
-# so after it divide by 2
-
-# EVEN EXAMPLE:
-# L = [1,2,3,4,5,6,7,8]
-# x = len(L) // 2
-# print(x) #:index: 4 which is 5
-# y = x - 1 # so -1 from index for previous
-# print((L[x]+L[y])/2 )
-
-# Odd EXAMPLE:
-# L = [1,2,3,4,5,6,7,8]
-# for x in L:
-#     Median = x // 2
-# print("Index: ",Median , "item: " ,L[Median])
 
 
 # //////////////////////////////////////::
@@ -742,14 +767,6 @@ print(max)  # Output: 44
 # print(ConvrtBinToStr(LST))
 
 
-# Sum Of First 1000
-# def Sum(x):
-#     total = 0
-#     for i in range(x+1):
-#         total += i
-#     print(total)
-#
-# Sum(1000)
 
 
 # Changing Number 1 to 2:Matrix!
