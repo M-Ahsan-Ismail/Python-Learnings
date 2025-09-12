@@ -207,7 +207,7 @@ from enum import Enum
 #     BLUE = 3
 
 # Now you use: Color.RED, Color.GREEN, Color.BLUE
-# Benefit: Readability , Maintainability
+# Benefit: Readability , Maintainability`
 
 
 #:::::::::::::::###########################--------------------###:#######-------------------------
@@ -712,26 +712,6 @@ print(list(res))  # [1]
 res = list(filter(lambda r: r + 2 == 0, [1, 2, 3, -2]))
 print(res)  # [-2]
 
-
-# sum items simply:
-def eve(n):
-    return n + 2
-
-
-res = filter(eve, [1, 2, 3])
-print(list(res))  # [1,2,3]
-
-
-#  bcz 1+2 = True , possible , 2+1 = True again possible , all three items pass the filter so returning true , filter just checks weather result is true or not.
-
-
-# Fitler to check even nums...:-
-def fun(n):
-    return n % 2 == 0
-
-
-res = filter(fun, [1, 2, 3, 4, 5, 6])
-print(list(res))  # [2, 4, 6]A
 
 # ------------------------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------->  Eval()  <----------------------------------------------------
