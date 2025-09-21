@@ -1,0 +1,139 @@
+
+################################################################///: To-Upper , To-Lower
+SmallName = "ahsan khan"
+CapitalName = "AHSAN KHAN"
+
+print("Capital Name Is:",SmallName.upper())
+print("Capital Name Is:",SmallName.captilize())
+print("Lower Name Is: ",CapitalName.lower())
+
+
+#----------title capitilizez the each word 1st letter.
+
+s = 'ahsan is yes'
+R1 = s.title()
+print(R1) # Ahsan Is Yes
+
+
+
+###############################################################////: Find Method.
+returns 1st occurance , not an iterator.
+
+print("Enter String:")
+String = input()
+print("Enter Word Here To Find:")
+WordToFind = input()
+
+index = String.find(WordToFind)
+
+if index != -1:
+    print(f"Substring :---> {WordToFind} <---: Was Found At Index: {index}")
+else:
+    print(f"Substring : {WordToFind} Not Found In: {String}")
+
+
+###################################################################//////: To Replace
+does not chnage actual string , makes an copy.
+
+name = "ahsan"
+print(name.replace( "ahsan", "ismail"))
+
+replace(old,new)
+
+
+
+
+######################################################################################::: Find Character By Index:
+a="Ahsan Khan"
+print(a[1])
+
+
+
+
+
+
+######################################################################################/// Split String
+
+
+
+a= " Ahsan , Khan"
+b= a.split(",")
+print(b)
+print("0 String: ",b[0])
+print("1 String:",b[1])
+
+
+
+
+
+
+#############################################################################################/////: Count Specific Word
+
+
+a = "Ahsan Khan Ahsan Ismails Ismailie Ahsan "
+b=a.count("Ahsan")
+print("Ahsan Apeears : ",b , "Times")
+
+
+
+
+                                                                               //// string.count(value, start, end)
+
+a = "Ahsan Khan Ahsan Ismails Ahsan  Ahsan Ismailie Ahsan  Ahsan"
+b=a.count("Ahsan",3,17)
+print("Ahsan Apeears : ",b , "Times")
+
+
+
+############################################################################################//////:Center(width_of_string,fillChar)
+in it we specifies the width by telling more and filling extra space with special thing.
+
+String = 'ahsan is'
+print(String.center(len(String)+2 , "*"))  # *ahsan is*
+
+
+
+###########################################################################################################: Old Formating:
+%s = string
+%d = integer
+%f = float
+%%	Literal % symbol	'Discount: %d%%' % 10 → 'Discount: 10%'
+
+
+print('Hello {} Is {}'.format('Mr',23))
+print('Hello %s is %d' % ('Mr', 23))
+print('Hello %s is %s' % ('Mr', 'Mr'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
