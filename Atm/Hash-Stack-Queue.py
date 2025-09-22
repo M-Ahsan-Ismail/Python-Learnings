@@ -83,35 +83,34 @@ print("Queue-Empty: ",not qu)   # Queue-Empty:  False
 print("Queue Size: ", len(qu))  # Queue Size:  2
 
 
-#//////////////////////////////////
+#-----------------------------------------------------------: Dictionary Basic Operation
 
-# HashMap = { "KEY1" : "Ahsan", "KEY2" : "Khan"   }
-#
-#
-# newK = input("Enter Name: ")
-# v = input("enter its value: ")
-# HashMap.update({newK:v})
-# print(HashMap)
-#
-#
-# W_K_T_U = input("Enter Key: ")
-# if W_K_T_U in HashMap:
-#     NK = input("Enter New Name: ")
-#     HashMap[NK] = HashMap.pop(W_K_T_U)
-#     print(HashMap)
-# else:
-#     print("key Not Found!")
-#
-# WVal = input("Enter Vale: ")
-# if WVal in HashMap.values():
-#     NN = input("Enter new Value: ")
-#     HashMap.update({key : NN for key,value in HashMap.items() if value==WVal })
-#     print(HashMap)
-# else:
-#     print("Value Not Found!")
+HashMap = {"A":70 ,"B":90 ,"C":30}
 
 
+#------------------------------------: Add New Key Value Pair
+NewKey = input("Enter Key Name: ")
+Value = input("Enter Value: ")
+HashMap.update({NewKey : Value})
+print(HashMap)
 
+
+#--------------------------------: Updating Key Name
+
+W_K_T_U = input("Enter Key: ")
+if W_K_T_U in HashMap:
+    NK = input("Enter New Name: ")
+    HashMap.update({NK: HashMap.pop(W_K_T_U)}) # OR HashMap[NK] = HashMap.pop(W_K_T_U)
+    print(HashMap)
+else:
+    print("key Not Found!")
+
+#-----------------------------: Update Value by finding key as we just gives the value to repace  with what value.
+Which_value = input('Enter Value To Update: ')
+if int(Which_value) in HashMap.values():
+    NewValue = input('New Value: ')
+    HashMap.update({key: NewValue for key,value in HashMap.items() if int(Which_value) == value})
+print(HashMap)
 
 
 #------------------------------------:   Interview Qs
@@ -124,6 +123,7 @@ for keys , values in Hash.items():
     Temp.append(values)
 
 print(f'Sum: {sum(Temp)})    Average: {(sum(Temp)) / len(Hash)}')    # Sum: 190)    Average: 63.333333333333336
+
 
 
 
