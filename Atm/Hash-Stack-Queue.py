@@ -23,66 +23,64 @@ Example: my_dict = {"name": "Ali", "age": 25}
 
 
 
-#: ////////////////////////////: Stack: lifo , last in first out , plates ka stack
-#: Cntrl-z Cntrl-v , jo sab se baad ma delete hota , wohi sab se pehla show hota
+#-----------------------------------------: Stack :-----> LIFO , last in first out , plates ka stack
 
-# stack = []
-#
-# #Push:
-#
-# e1 = 10
-# e2 = 20
-# e3 = 30
-# stack.append(e1)
-# stack.append(e2)
-# stack.append(e3)
-# print(stack)
-#
-# #POP:
-#
-# if not stack:
-#     print("Stack Empty!")
-# else:
-#     e = stack.pop()
-#     print("Removed Element: ",e )
-#     print("Stack : ",stack)
-#
-# # Peek
-# print("Top item: ",stack[-1])
-#
-# # size
-#
-# print("Size: ", len(stack))
+#: Control-z Control-v , jo sab se baad ma delete hota , wohi sab se pehla show hota
+
+stack = []
+
+#--------------------: Push
+
+e1 = 10
+e2 = 20
+e3 = 30
+stack.append(e1)
+stack.append(e2)
+stack.append(e3)
+print(stack)      # [10, 20, 30]
+
+#----------------------: POP
+
+if not stack:
+    print("Stack Empty!")
+else:
+    e = stack.pop()
+    print("Removed Element: ",e )  # Removed Element:  30
+    print("Stack : ",stack)        # Stack :  [10, 20]
+
+#------------------------------: Peek
+print("Top item: ",stack[-1])           # Top item:  20
+
+#-------------------------------: size
+
+print("Size: ", len(stack))                # Size:  2
 
 
 
-#//////: Queue , linear dsa , element add,remove both side sa hoskta ismay--> Head---Tail
-# End where elements are added is Tail , End where removed in Head
+#------------------------------------:         Queue        :-----------------------------------------------------------
+
+# Linear data structure can add,remove element from both side ----->    Head  ---  Tail
+# End where elements are added is Tail , End where elements are  removed is Head
 # FIFO + LIFO
-# EnQueue--->add element in qu ,
-# DeQueue----> remeove element  ,
+# EnQueue---> add element in qu ,
+# DeQueue----> remove element in qu  ,
 # IsFull , isEmpty
-#
-# import collections
-#
-# qu = collections.deque()
-# qu.appendleft(10)
-# qu.appendleft(20)
-# qu.appendleft(30)
-# print("Queue: ",qu)
-#
-# a = qu.pop()
-# print("Item Removed: ",a , "   Queue: ",qu)
-#
-# print("Queue-Empty: ",not qu)
-#
-# print("Queue Size: ", len(qu))
-
-#////////////////////////////////////
-# Tuple:
-# tup = (1,2,3,)
 
 
+import collections
+
+qu = collections.deque()
+qu.appendleft(10)
+qu.appendleft(20)
+qu.appendleft(30)
+print("Queue: ",qu)   # Queue:  deque([30, 20, 10])
+
+a = qu.pop()
+print("Item Removed: ",a , "   Queue: ",qu)   # Item Removed:  10    Queue:  deque([30, 20])
+
+print("Queue-Empty: ",not qu)   # Queue-Empty:  False
+
+print("Queue Size: ", len(qu))  # Queue Size:  2
 
 
 #//////////////////////////////////
@@ -116,19 +114,16 @@ Example: my_dict = {"name": "Ali", "age": 25}
 
 
 
-#Interview Qs:
-#
-# Hash = {"A":70 ,"B":90 ,"C":30}
-# new = {f"{key}": value for key, value in Hash.items()}
-# print(new)
-# T=0
-# Li = []
-# for x in Hash.values():
-#    T+=x
-#    Li.append(x)
-#
-# print('sum: ',T)
-# print('divide: ', T/len(Li))
+#------------------------------------:   Interview Qs
+
+# Sum values and display average.
+Hash = {"A":70 ,"B":90 ,"C":30}
+
+Temp = []
+for keys , values in Hash.items():
+    Temp.append(values)
+
+print(f'Sum: {sum(Temp)})    Average: {(sum(Temp)) / len(Hash)}')    # Sum: 190)    Average: 63.333333333333336
 
 
 
