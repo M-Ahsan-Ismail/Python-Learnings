@@ -57,7 +57,60 @@ print("Size: ", len(stack))                # Size:  2
 
 
 
-#------------------------------------:         Queue        :-----------------------------------------------------------
+
+#------------------------------------:         Queue       :-----------------------------------------------------------
+
+# FiFo , add items from tail and remove items from head.
+
+# Enqueue → insert an element at the tail.
+# Dequeue → remove an element from the front.
+# Peek / Front → check the element at the front without removing it.
+# isEmpty → check if queue is empty.
+
+#  Dequeue                               Enqueue
+#    ^                                      |
+#    |                                      v
+#
+# +---------+   +---------+   +---------+
+# |    A    |   |    B    |   |    C    |
+# +---------+   +---------+   +---------+
+
+
+Queue = []
+
+def Enqueue(item):
+    Queue.append(item)
+    print("Queue: ",Queue)
+
+def DeQueue():
+    if Queue:
+        removed = Queue.pop(0)
+        print(f"Removed: {removed}")
+        print("Queue:", Queue)
+
+def Peek():
+    print(f'Peek item: {Queue[0]}')
+
+def IsEmpty():
+    print("Queue is empty" if not Queue else "Queue is not empty")
+
+    if not Queue:
+        print(f'Queue is empty')
+
+Enqueue('A') # Queue:  ['A']
+Enqueue('B') # Queue:  ['A', 'B']
+Enqueue('C') # Queue:  ['A', 'B', 'C']
+
+DeQueue()  # Queue:  ['B', 'C']
+
+Peek()   # Peek item: B
+IsEmpty()  # Queue is not empty
+
+
+
+
+
+#------------------------------------:         DeQueue (double ended queue)       :-----------------------------------------------------------
 
 # Linear data structure can add,remove element from both side ----->    Head  ---  Tail
 # End where elements are added is Tail , End where elements are  removed is Head
@@ -66,21 +119,21 @@ print("Size: ", len(stack))                # Size:  2
 # DeQueue----> remove element in qu  ,
 # IsFull , isEmpty
 
+# import collections
+#
+# qu = collections.deque()
+# qu.appendleft(10)
+# qu.appendleft(20)
+# qu.appendleft(30)
+# print("Queue: ",qu)   # Queue:  deque([30, 20, 10])
+#
+# a = qu.pop()
+# print("Item Removed: ",a , "   Queue: ",qu)   # Item Removed:  10    Queue:  deque([30, 20])
+#
+# print("Queue-Empty: ",not qu)   # Queue-Empty:  False
+#
+# print("Queue Size: ", len(qu))  # Queue Size:  2
 
-import collections
-
-qu = collections.deque()
-qu.appendleft(10)
-qu.appendleft(20)
-qu.appendleft(30)
-print("Queue: ",qu)   # Queue:  deque([30, 20, 10])
-
-a = qu.pop()
-print("Item Removed: ",a , "   Queue: ",qu)   # Item Removed:  10    Queue:  deque([30, 20])
-
-print("Queue-Empty: ",not qu)   # Queue-Empty:  False
-
-print("Queue Size: ", len(qu))  # Queue Size:  2
 
 
 #-----------------------------------------------------------: Dictionary Basic Operation
@@ -123,6 +176,7 @@ for keys , values in Hash.items():
     Temp.append(values)
 
 print(f'Sum: {sum(Temp)})    Average: {(sum(Temp)) / len(Hash)}')    # Sum: 190)    Average: 63.333333333333336
+
 
 
 
