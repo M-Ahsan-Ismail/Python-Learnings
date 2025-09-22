@@ -1,217 +1,16 @@
-# Encapsulation:
-
-# By default acessiable all methods,variable
-# PROTECTED = SINGLE _    class fun , class obj can use
-# Private = 2 __         acessiable only in class , not outhside by obj
-
-# class protected:
-#     _a = 10
-#
-# class B:
-#     obj = protected()
-#     b= 10
-#     s = int(b) + int(obj._a)           # can not do:   s = int(b) + int(_a)
-#     print(s)
-#
-# OBJ_B = B()
+# Classes and Objects:
+# A class is like a blueprint for creating objects. It defines the  methods (actions) that the objects of that class will have.
+# An object is an instance of a class. It's like a real-world entity that has attributes and can perform actions.
 
 
-# class Private():
-#     __a = 10
-# class B():
-#     obj = Private()
-#     b= 10
-#     s = int(b) + int(obj.__a)    # Error AyaGa , Juggar:Hack :int(obj._Private__a)
-#     print(s)
-# OBJ = B()
+# 4 Pillars of OOP: Encapsulation, Abstraction, Inheritance, Polymorphism
 
-
-#::::::::::::::::::::--------------::::::::::::::###############################################
-# /////////////////////////////////////////////#: Abstraction-Example:
-# First.py --> Add()
-#
-# Second.py ---> Subtract()
-#
-# Main.py ---> import First,Second
-# First.Add()  , Second.Subtract()
-#
-# /////////////////////////////////////////////# Abstraction--->  implemented by abstract class and interface.
-# /////////////////////////////////////////////#
-
-######: Abstract Class:
-# from abc import ABC, abstractmethod
-# class Car(ABC):
-#     def WheelCount(self):
-#         print("Car Have 4-Wheels!")
-#
-#     @abstractmethod
-#     def Speed(self):
-#         pass
-# class Rocco(Car):
-#     def Speed(self):
-#         print("Rocco ---> 200Km/H")
-#
-# Obj_Car = Rocco()
-# Obj_Car.WheelCount()
-# Obj_Car.Speed()
-
-
-# ////////////////////////////////////////////////////////////////
-# ////////////////////////////////////////////////////////////////#:  PolyMorphisim:
-# class Vechile():
-#   def Move(self):
-#     print("Car :- Moves")
-#
-# class Boat(Vechile):
-#   def Move(self):
-#     print("Boat :- Sails")
-#
-# class Plane(Vechile):
-#   def Move(self):
-#     print("Plane :- Flies")
-#
-#
-# VehObj = Vechile()
-# BoatObj = Boat()
-# PlaneObj = Plane()
-#
-# for x in VehObj,BoatObj,PlaneObj:
-#   x.Move()
-
-###############:::::# OverLoad:Ex-1:
-
-# class Calculator:
-#     def add(self, a, b):
-#         return a + b
-#
-#     def add(self, a, b, c):
-#         return a + b + c
-#
-#
-# calc = Calculator()
-# print(calc.add(2, 3 ,4))
-
-###############:::::# # OverRide: its runTime polymor and always happen in [parent--child] and
-# used to change behaviour of existing methods.
-
-# class Animal:
-#     def sound(self):
-#         print("Generic animal sound")
-#
-# class Dog(Animal):
-#     def sound(self):
-#         print("Bark")
-#
-# dog = Dog()
-# dog.sound()
-
-
-# ////////////////////////////////////////////////////////////////
-# ////////////////////////////////////////////////////////////////:::-  Class Method - :
-#
-# Method bounds to class not to object is class method.
-#: uses @classmethod decorator and passes CLS as 1st argument in function.
-#:By classMthd we can control the value of class-variable globally.
-#:Can:
-# Access class
-# Modify class
-# knows class state
-
-class ClassMethod:
-    score = 9
-
-    def __init__(self,age):
-        self.age = age
-
-    def res(self):
-        print(f'AGe: {self.age}  Score: {self.score}')
-
-    @classmethod
-    def Classmethod(cls, score):
-        cls.score = score
-
-obj1 = ClassMethod(age=23.5)
-obj2 = ClassMethod(age=24)
-
-ClassMethod.Classmethod(score=100)
-
-obj1.res()
-obj2.res()
-
-
-
-#-----------------: Difference from Instance Method :------------------------------------------
-
-# Instance method (def func(self):) → works with a single object (bound to self).
-# Class method (@classmethod def func(cls):) → works with the whole class (bound to cls).
-# So, class methods are aware of the class state (class variables) instead of individual object state.
-
-
-
-# Static Method:
-# knows nothing about class state.
-# No parameter like cls.
-# Can't access or modify class.
-# Uses: Grouping related functionality: , Improving code readability
-
-class StaticMethod:
-    @staticmethod
-    def res():
-        print("This is a Static Method")
-Obj = StaticMethod()
-Obj.res()
-
-
-# -----------:Virtual Method:
-# A method  that can be overridden (redefined) by a subclass.
-# In languages like C++/C#, you must use “virtual” keyword.
-# In python all methods are virtual by default
-# Implemented with method_overRiding.
-
-class Parent:
-    def res(self):
-        print("Parent's Version")
-
-class Child(Parent):
-    def res(self):
-        print("Child Version")
-
-ParentObj = Parent()
-ChildObj = Child()
-
-ParentObj.res() # Parent's Version
-ChildObj.res() # Child Version
-
-
-# /////////////////////////////////////////////////////////////////
-# early means when type of variable is determined at compile time.
-# Early-Binding:
-x: int=10
-
-# Late-Binding:
-x =10
-
-
-# /////////////////////////////////////////////////////////////////: Enums:
-# Enums, short for "enumerations," are like labels
-# Enums allow us to define a set of named constants.
-# These constants are used to represent values that are fixed and known at compile-time.
-# Example, if you have a set of colors (Red, Green, Blue), instead of using strings like "Red", "Green",
-# "Blue" directly in your code, you can define an enum:
-from enum import Enum
-
-
-# class Color(Enum):
-#     RED = 1
-#     GREEN = 2
-#     BLUE = 3
-
-# Now you use: Color.RED, Color.GREEN, Color.BLUE
-# Benefit: Readability , Maintainability`
 
 
 #:::::::::::::::###########################--------------------###:#######-------------------------
 #:::::::::::::::###########################--------------------###: inheritance:
+# Inheritance allows a subclass to inherit attributes and methods from another superclass. The subclass can then extend or modify the behavior of the superclass.
+# It promotes code reusability
 #:::::::::::::::###########################--------------------###:--------------------------------
 
 # When we use , __init()__ in child class , then child looses all its parent inheritance and init()
@@ -293,6 +92,239 @@ class Child(Father):
 Obj = Child()
 Obj.GrandProperty()
 Obj.Fatherproperty()
+
+#--------------------------------------------------------------:  Encapsulation :---------------------------------------
+#
+# Encapsulation helps in hiding the internal state of object and exposing only necessary functionalities.
+#
+# By default, all methods and variables are accessible.
+# To control accessibility, we use access modifiers:
+#
+# PROTECTED = Single underscore (_)
+#   - Can be used inside the class and its subclasses.
+#   - class function and class object can use.
+
+# PRIVATE = Double underscore (__)
+#   - Accessible only inside the class.
+#   - Not accessible from ----> object , outside class , sub class.
+
+class Protected:
+    _x = 10
+
+class Public:
+    obj = Protected()
+
+    res = obj._x + 10
+    print(res)
+
+Obj2 = Public()
+
+
+
+class Private():
+    __x = 10
+
+class Public():
+    obj = Private()
+    res = 10 + int(obj.__x)    # Error AyaGa , Juggar:Hack :int(obj._Private__a)
+    print(res) # 'Private' object has no attribute '_Public__x'
+OBJ = Public()
+
+#::::::::::::::::::::--------------::::::::::::::###############################################:-Abstraction
+# Abstraction is the process of hiding the complex implementation details and showing only the essential features of  object.
+# It allows programmers to focus on what an object does rather than how it does.
+
+# 2 ways to achieve: abstract class , interface.
+
+#--AbstractClass: a classs having 1 or more then 1 abstract methods , obj of abstract class cant be created , ABC module
+    # @abstractmethod.
+# abstract methods does not  have body and implementation is done in child class.
+
+#--Interface: is a abstract class having only abstract methods , even not single simple method.  same:class Random(ABC)
+#     can not make object of interface class.
+#
+# /////////////////////////////////////////////# Abstraction--->  implemented by abstract class and interface.
+# /////////////////////////////////////////////#
+
+######: Abstract Class:
+from abc import ABC, abstractmethod
+class Car(ABC):
+    def WheelCount(self):
+        print("Car Have 4-Wheels!")
+
+    @abstractmethod
+    def Speed(self):
+        pass
+class Rocco(Car):
+    def Speed(self):
+        print("Rocco ---> 200Km/H")
+
+Obj_Car = Rocco()
+Obj_Car.WheelCount()
+Obj_Car.Speed()
+
+#------------------------------------------------------:  PolyMorphisim :-----------------------------------------------
+# /////////////////////////////////////////
+# The word "polymorphism" means "many forms", same name but different bahaviors.
+# Polymorphism can  refer to  ability of  class or object to show different forms or behaviors.
+# Typically achieved through method overloading(within the same class) or overriding.
+# Function Poly:
+# ex: For strings len() returns the no of char  , For list/tuple len() returns the no of items , For dict no.of  key/value pairs
+
+
+class Vechile():
+  def Move(self):
+    print("Car :- Moves")
+
+class Boat(Vechile):
+  def Move(self):
+    print("Boat :- Sails")
+
+class Plane(Vechile):
+  def Move(self):
+    print("Plane :- Flies")
+
+
+VehObj = Vechile()
+BoatObj = Boat()
+PlaneObj = Plane()
+
+for x in VehObj,BoatObj,PlaneObj:
+  x.Move()
+
+###############:::::# OverLoad: Overloading allows a class to have multiple methods with the same name but different parameter lists.
+
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+    def add(self, a, b, c):
+        return a + b + c
+
+
+calc = Calculator()
+print(calc.add(2, 3 ,4))
+
+###############:::::# # OverRide: its runTime polymor and always happen in [parent--child] and
+# used to change behaviour of existing methods.
+
+class Animal:
+    def sound(self):
+        print("Generic animal sound")
+
+class Dog(Animal):
+    def sound(self):
+        print("Bark")
+
+dog = Dog()
+dog.sound()
+
+
+# ---------------------------------------------------------:  Class Method  :-------------------------------------------
+#
+# Method bounds to class not to object is class method.
+#: uses @classmethod decorator and passes CLS as 1st argument in function.
+#:By classMthd we can control the value of class-variable globally.
+#:Can:
+# Access class
+# Modify class
+# knows class state
+
+class ClassMethod:
+    score = 9
+
+    def __init__(self,age):
+        self.age = age
+
+    def res(self):
+        print(f'AGe: {self.age}  Score: {self.score}')
+
+    @classmethod
+    def Classmethod(cls, score):
+        cls.score = score
+
+obj1 = ClassMethod(age=23.5)
+obj2 = ClassMethod(age=24)
+
+ClassMethod.Classmethod(score=100)
+
+obj1.res()
+obj2.res()
+
+
+
+#---: Difference from Instance Method:
+
+# Instance method (def func(self):) → works with a single object (bound to self).
+# Class method (@classmethod def func(cls):) → works with the whole class (bound to cls).
+# So, class methods are aware of the class state (class variables) instead of individual object state.
+
+
+
+# ---------------------------------------------------------:  Static Method  :-------------------------------------------
+# knows nothing about class state.
+# No parameter like cls.
+# Can't access or modify class.
+# Uses: Grouping related functionality: , Improving code readability
+
+class StaticMethod:
+    @staticmethod
+    def res():
+        print("This is a Static Method")
+Obj = StaticMethod()
+Obj.res()
+
+
+# -------------------------------------------------------------------:  Virtual Method  :-------------------------------
+# A method  that can be overridden (redefined) by a subclass.
+# In languages like C++/C#, you must use “virtual” keyword.
+# In python all methods are virtual by default
+# Implemented with method_overRiding.
+
+class Parent:
+    def res(self):
+        print("Parent's Version")
+
+class Child(Parent):
+    def res(self):
+        print("Child Version")
+
+ParentObj = Parent()
+ChildObj = Child()
+
+ParentObj.res() # Parent's Version
+ChildObj.res() # Child Version
+
+
+
+#------------------------------------------------------------------------: Early & Late Binding :-----------------------
+
+# early means when type of variable is determined at compile time.
+# Early-Binding:
+x: int=10
+
+# Late-Binding:
+x =10
+
+
+# /////////////////////////////////////////////////////////////////: Enums:
+# Enums, short for "enumerations," are like labels
+# Enums allow us to define a set of named constants.
+# These constants are used to represent values that are fixed and known at compile-time.
+# Example, if you have a set of colors (Red, Green, Blue), instead of using strings like "Red", "Green",
+# "Blue" directly in your code, you can define an enum:
+from enum import Enum
+
+
+# class Color(Enum):
+#     RED = 1
+#     GREEN = 2
+#     BLUE = 3
+
+# Now you use: Color.RED, Color.GREEN, Color.BLUE
+# Benefit: Readability , Maintainability`
+
+
 
 
 #:::::::::::::::###########################--------------------###:#######-------------------------
