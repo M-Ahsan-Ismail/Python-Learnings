@@ -386,21 +386,17 @@ print(f'Unique: {[x for x in List if x not in Duplicates]}')
 # print(U)
 
 
-# #----> Union Of Lists : Without Using Set
+#----> Union Of Lists : Without Using Set
 
-# List = ['a','b','c','e', 'f' ,'n' ,'a' , 'n' , 'b','f','m','m','o']
-# Listy = ['a','b','c','z','y','m' , 'n', 'a' , 'n','f','f','f','m','o']
-# Done = []
+Union = []
+List = ['a','b','c','e', 'f' ,'n' ,'a' , 'n' , 'b','f','m','m','o']
+Listy = ['a','b','c','z','y','m' , 'n', 'a' , 'n','f','f','f','m','o']
 
-# for x in List:
-#     if x not in Listy or x in Listy and x not in Done:
-#         Union.append(x)
-#         Done.append(x)
-# for x in Listy:
-#     if x not in List and x not in Done:
-#         Union.append(x)
-#         Done.append(x)
-# print(union)
+for x in List+Listy:
+    if x not in Union:
+        Union.append(x)
+
+print(Union) # ['a', 'b', 'c', 'e', 'f', 'n', 'm', 'o', 'z', 'y']
 
 ##---------union using List Comprehension
 # union = []
@@ -786,3 +782,4 @@ print(max)  # Output: 44
 #             print(item, end=' ')
 #         print()
 # Fun()
+
