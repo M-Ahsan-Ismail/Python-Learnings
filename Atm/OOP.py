@@ -1,3 +1,12 @@
+@api.onchange decorator in Odoo is used to trigger a method automatically whenever a specified field is changed in the form view (UI) before saving the record.
+It is used to dynamically update other fields, set default values, or show warnings without saving data to the database.
+Used to display data on Client-side / Form view only as When user changes a field in the UI before saving.
+
+    
+@api.depends decorator is used on computed fields to tell Odoo on which fields the computation depends on.
+Whenever any of those dependent fields change, Odoo automatically recomputes the value of the computed field.
+It works on Server-side / ORM level. value is stored in DB only if you add store=True.
+
 # Classes and Objects:
 # A class is like a blueprint for creating objects. It defines the  methods (actions) that the objects of that class will have.
 # An object is an instance of a class. It's like a real-world entity that has attributes and can perform actions.
@@ -1122,3 +1131,4 @@ res = zip(listy, listy2)
 strings, integers = zip(*res)
 print(strings)  # ('a', 'b', 'c')
 print(integers)  # (1, 2, 3)
+
