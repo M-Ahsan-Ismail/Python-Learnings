@@ -518,11 +518,13 @@ Data = [  1,2,3  ]
 
 SubSets = [  []  ]
 
-for index , value in enumerate(Data):
-    for indexes in range(len(SubSets)):
-        res = SubSets[indexes].copy()
-        res.append(Data[index])
+
+for value in Data:
+    for index in range(len(SubSets)):
+        res = SubSets[index].copy()
+        res.append(value)
         SubSets.append(res)
+
 
 print(SubSets)
 
@@ -783,5 +785,6 @@ print(max)  # Output: 44
 #             print(item, end=' ')
 #         print()
 # Fun()
+
 
 
