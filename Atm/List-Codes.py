@@ -514,16 +514,17 @@ print(Tuple_List)
 
 # Logic: Copy Each Set Item and append data from list in that and append res in Set again.
 
-List = [1,2,3]
-Sets = [ [] ]
+Data = [  1,2,3  ]
 
-for index in range(len(List)):
-    for inx in range(len(Sets)):
-        res = Sets[inx].copy()
-        res.append(List[index])
-        Sets.append(res)
-print(Sets)
+SubSets = [  []  ]
 
+for index , value in enumerate(Data):
+    for indexes in range(len(SubSets)):
+        res = SubSets[indexes].copy()
+        res.append(Data[index])
+        SubSets.append(res)
+
+print(SubSets)
 
 
 
@@ -782,4 +783,5 @@ print(max)  # Output: 44
 #             print(item, end=' ')
 #         print()
 # Fun()
+
 
