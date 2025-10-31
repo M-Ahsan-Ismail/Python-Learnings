@@ -1,3 +1,28 @@
+| Command           | Meaning                                       | Example                        |
+| ----------------- | --------------------------------------------- | ------------------------------ |
+| `(0, 0, {vals})`  | Create a new related record                   | `(0, 0, {'name': 'New Line'})` |
+| `(1, id, {vals})` | Update an existing record                     | `(1, 5, {'price': 100})`       |
+| `(2, id, 0)`      | Delete a record (unlink)                      | `(2, 10, 0)`                   |
+| `(3, id, 0)`      | Unlink record from relation but not delete it | `(3, 4, 0)`                    |
+| `(4, id, 0)`      | Link an existing record (many2many)           | `(4, 7, 0)`                    |
+| `(5, 0, 0)`       | Remove all linked records                     | `(5, 0, 0)`                    |
+| `(6, 0, [ids])`   | Replace all linked records with new IDs       | `(6, 0, [1,2,3])`              |
+
+
+🧩 1️⃣ Dynamic Domain in Odoo Views:--------
+Dynamic domain means , domain depends on another field in same form View.
+    <field name="customer_id"/>
+<field name="sale_order_id" domain="[('partner_id', '=', customer_id)]"/>
+➡️ Here, when we select a customer_id, only sale orders of that customer appear.
+
+In Multi company setup we filter records by user allowed compamies, domain="[('company_id', 'in', allowed_company_ids)]".
+
+
+
+
+
+
+
 @api.onchange decorator in Odoo is used to trigger a method automatically whenever a specified field is changed in the form view (UI) before saving the record.
 It is used to dynamically update other fields, set default values, or show warnings without saving data to the database.
 Used to display data on Client-side / Form view only as When user changes a field in the UI before saving.
@@ -422,13 +447,17 @@ print(D.mro())  # [<class '__main__.D'>, <class '__main__.C'>, <class '__main__.
 
 
 ########################################################################################################################
-# --------------------------------------: 🌀 Python Generators — Summary Notes :-----------------------------------------
-# What is a Generator?
+--------------------------------------: 🌀 Python Generators — Summary Notes :-----------------------------------------
+ What is a Generator?
 # its an special type of function that remembers its state and yield vals one at a time using yield keyword.
 # A generator returns values one by one, not all at once like return.
 # Instead of return, we use the yield keyword.
 # yield pauses the function and remembers its state between calls, each next resumes where it was paused
 # returns generator object: <generator object Gen at 0x70e91ce871c0>
+This saves memory — perfect for large datasets. Lazy-evaluation.
+                           
+Odoo itself uses generators internally in various areas to improve performance and memory efficiency, 
+so we rarely need to write them manually unless we’re optimizing something big.
 
 
 def get_gen_vals():
@@ -502,6 +531,25 @@ List_obj = list(obj)
 
 for index, value in enumerate(obj):
     print(f'Val {index} : {value}')
+
+
+-----------------------: Odoo Generator Example :------------------
+class ResPartnerInherit(models.Model):
+    _inherit = 'res.partner'
+
+    def active_customers(self):
+        """Yield names of active customers"""
+        for partner in self.search([('active', '=', True)]):
+            yield partner.name
+            
+    def test_generator(self):
+        gen = self.active_customers()
+        
+        print(next(gen)) # Khan
+        
+        print(next(gen)) # Ahsan
+            
+
 
 #############-------######################--------::::::::::::::
 #############-------######################--------::::::::::::::: Lambda
@@ -1135,5 +1183,6 @@ res = zip(listy, listy2)
 strings, integers = zip(*res)
 print(strings)  # ('a', 'b', 'c')
 print(integers)  # (1, 2, 3)
+
 
 
