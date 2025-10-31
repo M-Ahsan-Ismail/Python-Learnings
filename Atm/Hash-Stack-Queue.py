@@ -23,6 +23,12 @@ Example: my_dict = {"name": "Ali", "age": 25}
 
 
 
+
+
+
+
+
+
 #-----------------------------------------: Stack :-----> LIFO , last in first out , plates ka stack
 
 #: Control-z Control-v , jo sab se baad ma delete hota , wohi sab se pehla show hota
@@ -176,6 +182,7 @@ for keys , values in Hash.items():
     Temp.append(values)
 
 print(f'Sum: {sum(Temp)})    Average: {(sum(Temp)) / len(Hash)}')    # Sum: 190)    Average: 63.333333333333336
+
 
 
 
