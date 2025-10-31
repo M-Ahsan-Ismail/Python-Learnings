@@ -1,3 +1,37 @@
+🔹 What is a Webhook?
+its an relatime notification system b/w 2 apps.
+instead one app asking repeatedly for updates, other app auto calls back and sends HTTP request whenever an event happens.
+
+⚙️ How It Works in Odoo:-
+
+Let’s say you have Odoo and another Shopify.
+
+You register a Webhook URL (https://localhost.odoo.com/order_created).
+
+When an event occurs in Odoo — for example, a new Sales Order is confirmed —
+
+Odoo sends an HTTP POST request to that URL, with JSON data about the event.
+
+Your other app receives it and does something (e.g. sends an email, updates inventory, etc.).
+
+Sended an webhook--->
+
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    def action_confirm(self):
+        res = super().action_confirm()
+        for order in self:
+            payload = {
+                'order_name': order.name,
+                'total': order.amount_total,
+            }
+            requests.post('https://shopify.com/api/receive_order', json=payload)
+        return res
+
+
+
+
 | Command           | Meaning                                       | Example                        |
 | ----------------- | --------------------------------------------- | ------------------------------ |
 | `(0, 0, {vals})`  | Create a new related record                   | `(0, 0, {'name': 'New Line'})` |
@@ -1183,6 +1217,7 @@ res = zip(listy, listy2)
 strings, integers = zip(*res)
 print(strings)  # ('a', 'b', 'c')
 print(integers)  # (1, 2, 3)
+
 
 
 
