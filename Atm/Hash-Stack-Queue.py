@@ -23,6 +23,33 @@ Example: my_dict = {"name": "Ali", "age": 25}
 
 
 
+🧩 1. Difference Between list and tuple
+
+| Feature                  | `list`                                     | `tuple`                                           |
+| ------------------------ | ------------------------------------------ | ------------------------------------------------- |
+| **Syntax**               | `[ ]`                                      | `( )`                                             |
+| **Mutable (changeable)** | ✅ Yes — you can add, remove, or edit items | ❌ No — fixed after creation                       |
+| **Speed**                | ⏳ Slower (bigger memory & modifiable)      | ⚡ Faster (lightweight, immutable)                 |
+| **Use case**             | When data changes                          | When data is fixed, constant, or used as key/pair |
+
+⚙️ 2. Speed — Who’s Faster?
+👉 Tuple is faster than a list,
+because it’s stored in memory as a fixed structure (immutable),
+so Python doesn’t need to allocate extra space or track changes.
+
+
+🧠 3. In Odoo — When to Use Which-----------------:
+
+✅ In states and selection fields tuple is used as key-value pair.
+we use here because we never modifies them in run time.
+
+✅ domain attributes in views (XML or Python)
+<field name="user_id" domain="[('company_id', '=', company_id)]"/>
+domain = [('state', '=', 'draft')]
+
+✅ In One2many or Many2many commands:
+self.line_ids = [(0, 0, {'name': 'Line 1'})]
+we passes vals inside tuple.
 
 
 
@@ -182,6 +209,7 @@ for keys , values in Hash.items():
     Temp.append(values)
 
 print(f'Sum: {sum(Temp)})    Average: {(sum(Temp)) / len(Hash)}')    # Sum: 190)    Average: 63.333333333333336
+
 
 
 
